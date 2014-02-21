@@ -57,7 +57,7 @@ class CCWObjectWrapper {
 	}
 	
 	static function Load_DOTNET_Dll($dllPath) {
-		$reflection = $COM->New_Static('mscorlib', 'System.Reflection.Assembly');
+		$reflection = CCWObjectWrapper::Universal_CCW_Factory()->New_Static('mscorlib', 'System.Reflection.Assembly');
 		$reflection->Call_Static_Method('LoadFrom', array(realpath($dllPath)));
 	}
 }
