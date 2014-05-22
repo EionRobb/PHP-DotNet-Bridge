@@ -18,6 +18,11 @@ class CCWObjectWrapper {
 		$this->COM = $comObjectOrAssembly;
 	}
 	
+	function __destruct() {
+		$this->COM->Destroy();
+		$this->COM = null;
+	}
+	
 	function __get($property) {
 		$value = $this->COM->Get_Property_Value($property);
 		if (gettype($value) == 'object')
