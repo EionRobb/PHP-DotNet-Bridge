@@ -871,13 +871,6 @@ Namespace Universal_CCW
 
 
 		
-		Protected Overrides Sub Finalize()
-			If TypeOf _Contained_Object Is IDisposable Then Call_Method("Dispose")
-			_Contained_Object = Nothing
-			_Contained_Static = Nothing
-			_Universal_CCW_Factory_Reference = Nothing
-			
-			End Sub
 			
 			
 			
@@ -905,7 +898,10 @@ Namespace Universal_CCW
 	''' reference unlinked.
 	''' </summary>
 		Public Sub Destroy() Implements IUniversal_CCW_Container.Destroy
-			Finalize()
+			If TypeOf _Contained_Object Is IDisposable Then Call_Method("Dispose")
+			_Contained_Object = Nothing
+			_Contained_Static = Nothing
+			_Universal_CCW_Factory_Reference = Nothing
 			
 			End Sub
 			
