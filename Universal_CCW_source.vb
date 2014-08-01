@@ -605,18 +605,12 @@ Namespace Universal_CCW
 			'unbox type
 			Dim valueAsType As ValueType = DirectCast(_Contained_Object, ValueType)
 			Dim valueType As Type = valueAsType.GetType()
-			Dim propertyInfo As PropertyInfo = valueType.GetProperty(property_name)
-			If IsNothing(propertyInfo) Then
-				Dim field As FieldInfo = valueType.GetField(property_name)
-				if IsNothing(field) Then
-					Throw New Exception("Property " + property_name + " not found")
-				End if
+			Dim field As FieldInfo = valueType.GetField(property_name)
+			if IsNothing(field) Then
+				Throw New Exception("Property " + property_name + " not found")
+			End if
 				
-				field.SetValue(valueAsType, new_value)
-			Else
-				propertyInfo.SetValue(valueAsType, new_value)
-			End If
-			
+			field.SetValue(valueAsType, new_value)
 			Set_Property_Value = Nothing
 		Else
 			If using_method = "Set" Then
