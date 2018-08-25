@@ -31,3 +31,6 @@ $thirdPartyObj->something = 'another thing';
 $thirdPartyObj = null;
 </code>
 
+Compiling
+---------
+To compile use `C:\Windows\Microsoft.NET\Framework\v4.0.30319\vbc.exe /vbruntime+ /warnaserror+ /target:library Universal_CCW_source.vb /out:Universal_CCW.dll`
